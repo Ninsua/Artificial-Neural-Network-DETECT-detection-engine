@@ -36,15 +36,6 @@ output_json = "./mock_data.json"
 mock_data = []
 event_id = 1
 
-with open(malware_names_file, mode='r') as malware_read:				
-	for row in malware_read:
-		mock_data.append(dict(event = 'E' + str(event_id),
-		sensor = 'S' + str(random.randint(1,10)),
-		sensor_group = 'G2',
-		timestamp = random_timestamp()
-		))
-		event_id = event_id + 1
-
 with open(darpa_attacks_file, mode='r') as darpa_read:				
 	for row in darpa_read:
 		split_row = row.split(';')
@@ -55,6 +46,16 @@ with open(darpa_attacks_file, mode='r') as darpa_read:
 		timestamp = darpa_convert_timestamp(split_row[1],split_row[2])
 		))
 		event_id = event_id + 1
+
+with open(malware_names_file, mode='r') as malware_read:				
+	for row in malware_read:
+		random_event_id = random.randint(1, event_id)
+		mock_data.append(dict(event = 'E' + str(random_event_id),
+		sensor = 'S' + str(random.randint(1,10)),
+		sensor_group = 'G2',
+		timestamp = random_timestamp()
+		))
+		
 
 random.shuffle(mock_data)
 

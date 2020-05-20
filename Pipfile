@@ -10,6 +10,7 @@ numpy = "*"
 pandas = "*"
 sklearn = "*"
 category-encoders = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.7"
