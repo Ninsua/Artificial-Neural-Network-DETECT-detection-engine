@@ -71,6 +71,10 @@ sensor_results = combine_df_columns(encoded_sensors)
 event_results = combine_df_columns(encoded_events)
 event_results2 = dict()
 
+
+
+
+
 print(sensors_classes)
 print(event_classes)
 
