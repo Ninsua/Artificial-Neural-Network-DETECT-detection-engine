@@ -47,7 +47,12 @@ def read_into_window(data, index):
     end = start + WINDOW_SIZE
 
     for i in range(start, end):
-        window.append(data[i])
+        current = data[i]
+        dataArray = [
+            current[0],
+            current[1]
+        ]
+        window.append(dataArray)
     return window
 
 with open(Path(PATH_TO_MOCK_DATA)) as json_file:
@@ -61,7 +66,14 @@ with open(Path(PATH_TO_MOCK_DATA)) as json_file:
     """ Encode events """
     encoded_events = encode(reshaped_events)
     
+    """ Data to be written to output file """ 
+    output = {}
+
     """ Read a number of events into a window, starting at 0, that will be used as input for the neural networks """
     index = 0
     window = read_into_window(encoded_events, index)
 
+    output['window'] = window
+
+    with open('output.json', 'w') as outfile:
+        json.dump(output, outfile)
