@@ -8,7 +8,7 @@ from operator import attrgetter
 from sklearn.datasets import load_boston
 
 I = 1
-PATH_TO_MOCK_DATA = "mock-dataset/mock_data.json"
+PATH_TO_MOCK_DATA = "../mock-dataset/mock_data.json"
 WINDOW_SIZE = 30 * I
 
 def convert_list_of_dicts(lod, keylist):
@@ -73,7 +73,7 @@ with open(Path(PATH_TO_MOCK_DATA)) as json_file:
     index = 0
     window = read_into_window(encoded_events, index)
 
-    output['window'] = window
+    output['events'] = window
 
     with open('output.json', 'w') as outfile:
         json.dump(output, outfile)
